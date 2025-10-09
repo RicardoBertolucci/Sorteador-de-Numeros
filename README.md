@@ -33,10 +33,8 @@ O foco principal está na aplicação de **boas práticas de HTML, CSS e JavaScr
 ```bash
 Sorteador de Números/
 ├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── script.js
+├── style.css
+├── script.js
 └── README.md
 ```
 

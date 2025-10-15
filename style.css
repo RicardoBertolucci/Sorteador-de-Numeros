@@ -40,3 +40,7 @@
   --label-medium: 700 1.25rem/150% 'Roboto Flex', sans-serif;
   --paragraph-small: 700 1rem/150% 'Roboto Flex', sans-serif;
 }
+
+body {
+  background-color: #77C0AF;
+}

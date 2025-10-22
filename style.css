@@ -1,3 +1,11 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
 :root {
   /* Content */
   --content-primary: #ffffff;
@@ -39,4 +47,23 @@
   --paragraph-small: 500 .75rem/150% 'Roboto Flex', sans-serif;
   --label-medium: 700 1.25rem/150% 'Roboto Flex', sans-serif;
   --paragraph-small: 700 1rem/150% 'Roboto Flex', sans-serif;
+}
+
+/* Styles */
+body {
+  background-color: var(--background-primary);
+}
+
+body img {
+  
+}
+
+.number-generator {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.number-generator .number-generator__info {
+  color: var(--content-primary);
 }

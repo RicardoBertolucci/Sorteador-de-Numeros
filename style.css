@@ -121,6 +121,7 @@ body img {
 .feature__description {
   color: var(--content-secondary);
   font: var(--paragraph-small);
+  letter-spacing: 0px;
 }
 
 .number-generator__form {
@@ -148,3 +149,44 @@ body img {
 }
 
 /* Forms */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form__inputs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 86px;
+  height: 88px;
+  box-sizing: border-box;
+}
+
+.form__label {
+  font: var(--label-small);
+  color: var(--content-secondary);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.form__input {
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  padding: 4px 8px;
+  height: 56px;
+  border: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

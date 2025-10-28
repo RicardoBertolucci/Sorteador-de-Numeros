@@ -110,7 +110,8 @@
                 Posso escolher o intervalo dos números?
               </h2>
               <p class="feature__description">
-                Sim, você pode definir os valores mínimo e máximo para o intervalo dos números sorteados.
+                Sim, você pode definir os valores mínimo e máximo para o
+                intervalo dos números sorteados.
               </p>
             </div>
           </section>
@@ -127,20 +128,27 @@
         </div>
 
         <form id="number-form" class="form">
-          <label class="form__label" for="quantity">Números</label>
-          <input
-            class="form__input"
-            type="number"
-            id="quantity"
-            name="quantity"
-          />
+          <div class="form__inputs">
+            <div class="form__field">
+              <label class="form__label" for="quantity">Números</label>
+              <input
+                class="form__input"
+                type="number"
+                id="quantity"
+                name="quantity"
+              />
+            </div>
 
-          <label class="form__label" for="from">De</label>
-          <input class="form__input" type="number" id="from" name="from" />
+            <div class="form__field">
+              <label class="form__label" for="from">De</label>
+              <input class="form__input" type="number" id="from" name="from" />
+            </div>
 
-          <label class="form__label" for="to">Até</label>
-          <input class="form__input" type="number" id="to" name="to" />
-
+            <div class="form__field">
+              <label class="form__label" for="to">Até</label>
+              <input class="form__input" type="number" id="to" name="to" />
+            </div>
+          </div>
           <label class="form__switch" for="unique">
             <input
               type="checkbox"
@@ -149,6 +157,7 @@
               class="form__switch-input"
             />
             <span class="form__switch-slider"></span>
+            <span class="form__switch-text">Não repetir número</span>
           </label>
         </form>
 

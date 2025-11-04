@@ -188,7 +188,26 @@ body img {
   color: var(--content-primary);
   font: var(--display-small);
   text-align: center;
+    cursor: pointer;
 }
+
+.form__input:hover {
+  border: 1px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image: 
+    linear-gradient(var(--background-secondary), var(--background-secondary)), 
+    linear-gradient(90deg, var(--gradient-border));
+}
+
+.form__input:focus {
+  outline: none;
+  border: 2px solid transparent;
+  background: linear-gradient(var(--background-secondary), var(--background-secondary))
+      padding-box,
+    linear-gradient(90deg, var(--gradient-border)) border-box;
+}
+
 
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -200,6 +219,7 @@ input[type="number"]::-webkit-inner-spin-button {
   white-space: nowrap;
   gap: 8px;
   align-items: center;
+  cursor: pointer;
 }
 
 .form__switch-input {
@@ -210,6 +230,7 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 0;
 }
 
+
 .form__switch-slider {
   width: 30px;
   height: 20px;
@@ -218,6 +239,10 @@ input[type="number"]::-webkit-inner-spin-button {
   position: relative;
   transition: all 0.2s ease;
   background: linear-gradient(90deg, var(--content-tertiary));
+}
+
+.form__switch-input:checked + .form__switch-slider {
+  background: linear-gradient(90deg, var(--gradient-background));
 }
 
 .form__switch-slider::before {
@@ -232,7 +257,8 @@ input[type="number"]::-webkit-inner-spin-button {
   transition: transform 0.3s ease;
 }
 
-.form__switch-text {
+.form__switch-input:checked + .form__switch-slider::before {
+  transform: translateX(10px);
 }
 
 .form__switch-text {
@@ -241,4 +267,54 @@ input[type="number"]::-webkit-inner-spin-button {
   font-family: "Inter", sans-serif;
   line-height: 150%;
   letter-spacing: 0%;
+}
+
+.form__button--primary {
+  position: relative;
+  background: var(--background-tertiary);
+  color: var(--content-primary);
+  font: var(--label-medium);
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  height: 56px;
+  padding: 16px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form__button--primary:hover {
+  border: 1px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image: 
+    linear-gradient(var(--background-tertiary), var(--background-tertiary)),
+    linear-gradient(90deg, var(--gradient-border));
+  box-shadow: 0 0 10px rgba(197, 141, 231, 0.4);
+}
+
+.form__button--primary:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 14px rgba(197, 141, 231, 0.6);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image: 
+    linear-gradient(var(--background-tertiary), var(--background-tertiary)),
+    linear-gradient(90deg, var(--gradient-border));
+}
+
+.form__button--primary svg {
+  transition: transform 0.3s ease;
+}
+
+.form__button--primary:hover svg {
+  transform: translateX(4px);
+}
+
+.form__button--primary:not(:hover) svg {
+  transform: translateX(0);
 }

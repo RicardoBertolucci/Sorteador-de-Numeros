@@ -70,6 +70,7 @@ body img {
   min-height: 100dvh;
 }
 
+/* ========== LEFT SIDE ========== */
 .number-generator__info {
   max-width: 508px;
   display: flex;
@@ -125,8 +126,15 @@ body img {
   letter-spacing: 0px;
 }
 
+/* ========== RIGHT SIDE ========== */
+.number-generator__container {
+  width: 482px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .number-generator__form {
-  max-width: 482px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -317,4 +325,36 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .form__button--primary:not(:hover) svg {
   transform: translateX(0);
+}
+
+/* ========== DRAW RESULT ========== */
+.number-generator__result {
+
+}
+
+.result__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result__title {
+  font: var(--label-medium);
+  color: var(--content-primary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.result__paragraph {
+  font: var(--label-small);
+  color: var(--content-secondary);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.result__sort-numbers {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: var(--content-primary);
 }

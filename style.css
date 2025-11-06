@@ -277,7 +277,7 @@ input[type="number"]::-webkit-inner-spin-button {
   letter-spacing: 0%;
 }
 
-.form__button--primary {
+.form__button-primary {
   position: relative;
   background: var(--background-tertiary);
   color: var(--content-primary);
@@ -295,7 +295,7 @@ input[type="number"]::-webkit-inner-spin-button {
   transition: all 0.3s ease;
 }
 
-.form__button--primary:hover {
+.form__button-primary:hover {
   border: 1px solid transparent;
   background-origin: border-box;
   background-clip: padding-box, border-box;
@@ -305,7 +305,7 @@ input[type="number"]::-webkit-inner-spin-button {
   box-shadow: 0 0 10px rgba(197, 141, 231, 0.4);
 }
 
-.form__button--primary:active {
+.form__button-primary:active {
   transform: scale(0.98);
   box-shadow: 0 0 14px rgba(197, 141, 231, 0.6);
   background-origin: border-box;
@@ -315,20 +315,21 @@ input[type="number"]::-webkit-inner-spin-button {
     linear-gradient(90deg, var(--gradient-border));
 }
 
-.form__button--primary svg {
+.form__button-primary svg {
   transition: transform 0.3s ease;
 }
 
-.form__button--primary:hover svg {
+.form__button-primary:hover svg {
   transform: translateX(4px);
 }
 
-.form__button--primary:not(:hover) svg {
+.form__button-primary:not(:hover) svg {
   transform: translateX(0);
 }
 
 /* ========== DRAW RESULT ========== */
-.number-generator__result {}
+.number-generator__result {
+}
 
 .result__container {
   display: flex;
@@ -355,6 +356,29 @@ input[type="number"]::-webkit-inner-spin-button {
   justify-content: center;
   width: 100%;
   color: var(--content-primary);
+  overflow-x: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #77c0af #ffffff;
+}
+
+.result__sort-numbers::-webkit-scrollbar {
+  height: 6px;
+}
+
+.result__sort-numbers::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.result__sort-numbers::-webkit-scrollbar-thumb {
+  background: #77c0af; /* verde do seu palette */
+  border-radius: 10px;
+}
+
+.result__sort-numbers::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .result__sort-numbers .result__numbers {

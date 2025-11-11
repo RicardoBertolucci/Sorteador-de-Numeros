@@ -325,7 +325,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 /* ========== DRAW RESULT ========== */
-.number-generator__result {}
+/* .number-generator__result {} */
 
 .result__container {
   display: flex;
@@ -399,10 +399,11 @@ input[type="number"]::-webkit-inner-spin-button {
   .number-generator {
     max-width: 320px;
     flex-direction: column;
+    min-height: unset;
   }
 
   .number-generator__info {
-    max-width: unset;
+    max-width: 320px;
     margin-top: 8rem;
   } 
 
@@ -414,9 +415,28 @@ input[type="number"]::-webkit-inner-spin-button {
     font: var(--display-medium);
   }
 
-
-  /* ========== RIGHT SIDE ========== */
   .number-generator__container {
     width: 320px;
+  }
+
+  .number-generator__questions {
+    position: absolute;
+    max-width: 320px;
+    top: 750px;
+    padding-bottom: 44px;
+  }
+
+  .number-generator__form {
+    position: absolute;
+    top: 306px;
+    max-width: 320px;
+  }
+
+  .form__button-primary {
+    top: 354px;
+  }
+
+  .number-generator__form {
+    display: none;
   }
 }

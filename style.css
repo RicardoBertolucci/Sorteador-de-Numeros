@@ -61,25 +61,26 @@ body img {
   margin: 4.75rem 0 0 7.5rem;
 }
 
+/* =============== MAIN CONTAINER CONTENT  =============== */
 .number-generator {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1098px;
+  display: grid;
+  grid-template:
+    "number-generator__header number-generator__container"
+    "number-generator__questions number-generator__container";
+  row-gap: 38px;
   margin: 0 auto;
+  max-width: 1098px;
   min-height: 100dvh;
+  place-content: center;
+  align-items: center;
 }
 
-/* ========== LEFT SIDE ========== */
-.number-generator__info {
-  max-width: 508px;
-  display: flex;
-  flex-direction: column;
-  gap: 38px;
-  letter-spacing: -1px;
-}
+/* =============== LEFT SIDE =============== */
 
+/* Header */
 .number-generator__header {
+  grid-area: number-generator__header;
+  max-width: 582px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -99,7 +100,9 @@ body img {
   text-transform: uppercase;
 }
 
+/* Questions */
 .number-generator__questions {
+  grid-area: number-generator__questions;
   max-width: 386px;
   display: flex;
   flex-direction: column;
@@ -126,8 +129,9 @@ body img {
   letter-spacing: 0px;
 }
 
-/* ========== RIGHT SIDE ========== */
+/* Randomic Number */
 .number-generator__container {
+  grid-area: number-generator__container;
   width: 482px;
   display: flex;
   flex-direction: column;
@@ -203,15 +207,21 @@ body img {
   border: 1px solid transparent;
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  background-image:
-    linear-gradient(var(--background-secondary), var(--background-secondary)),
+  background-image: linear-gradient(
+      var(--background-secondary),
+      var(--background-secondary)
+    ),
     linear-gradient(90deg, var(--gradient-border));
 }
 
 .form__input:focus {
   outline: none;
   border: 2px solid transparent;
-  background: linear-gradient(var(--background-secondary), var(--background-secondary)) padding-box,
+  background: linear-gradient(
+        var(--background-secondary),
+        var(--background-secondary)
+      )
+      padding-box,
     linear-gradient(90deg, var(--gradient-border)) border-box;
 }
 
@@ -246,7 +256,7 @@ input[type="number"]::-webkit-inner-spin-button {
   background: linear-gradient(90deg, var(--content-tertiary));
 }
 
-.form__switch-input:checked+.form__switch-slider {
+.form__switch-input:checked + .form__switch-slider {
   background: linear-gradient(90deg, var(--gradient-background));
 }
 
@@ -262,7 +272,7 @@ input[type="number"]::-webkit-inner-spin-button {
   transition: transform 0.3s ease;
 }
 
-.form__switch-input:checked+.form__switch-slider::before {
+.form__switch-input:checked + .form__switch-slider::before {
   transform: translateX(10px);
 }
 
@@ -272,56 +282,6 @@ input[type="number"]::-webkit-inner-spin-button {
   font-family: "Inter", sans-serif;
   line-height: 150%;
   letter-spacing: 0%;
-}
-
-.form__button-primary {
-  position: relative;
-  background: var(--background-tertiary);
-  color: var(--content-primary);
-  font: var(--label-medium);
-  text-transform: uppercase;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  height: 56px;
-  padding: 16px 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.form__button-primary:hover {
-  border: 1px solid transparent;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  background-image:
-    linear-gradient(var(--background-tertiary), var(--background-tertiary)),
-    linear-gradient(90deg, var(--gradient-border));
-  box-shadow: 0 0 10px rgba(197, 141, 231, 0.4);
-}
-
-.form__button-primary:active {
-  transform: scale(0.98);
-  box-shadow: 0 0 14px rgba(197, 141, 231, 0.6);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  background-image:
-    linear-gradient(var(--background-tertiary), var(--background-tertiary)),
-    linear-gradient(90deg, var(--gradient-border));
-}
-
-.form__button-primary svg {
-  transition: transform 0.3s ease;
-}
-
-.form__button-primary:hover svg {
-  transform: translateX(4px);
-}
-
-.form__button-primary:not(:hover) svg {
-  transform: translateX(0);
 }
 
 /* ========== DRAW RESULT ========== */
@@ -384,12 +344,72 @@ input[type="number"]::-webkit-inner-spin-button {
   line-height: 150%;
   font-weight: bold;
   letter-spacing: 0%;
-  font-family: 'Roboto Mono', sans-serif;
+  font-family: "Roboto Mono", sans-serif;
   color: var(--content-brand);
   padding: 7px 13px;
 }
 
-@media(min-width: 0px) and (max-width: 767px) {  
+/* Button Draw */
+.form__button-primary {
+  position: relative;
+  background: var(--background-tertiary);
+  color: var(--content-primary);
+  font: var(--label-medium);
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  height: 56px;
+  padding: 16px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form__button-primary:hover {
+  border: 1px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image: linear-gradient(
+      var(--background-tertiary),
+      var(--background-tertiary)
+    ),
+    linear-gradient(90deg, var(--gradient-border));
+  box-shadow: 0 0 10px rgba(197, 141, 231, 0.4);
+}
+
+.form__button-primary:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 14px rgba(197, 141, 231, 0.6);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image: linear-gradient(
+      var(--background-tertiary),
+      var(--background-tertiary)
+    ),
+    linear-gradient(90deg, var(--gradient-border));
+}
+
+.form__button-primary svg {
+  transition: transform 0.3s ease;
+}
+
+.form__button-primary:hover svg {
+  transform: translateX(4px);
+}
+
+.form__button-primary:not(:hover) svg {
+  transform: translateX(0);
+}
+
+.number-generator__result {
+  display: none;
+}
+
+/* =============== Responsive mobile =============== */
+@media (min-width: 0px) and (max-width: 1064px) {
   body img {
     inset: 0;
     margin: 2.75rem auto 0;
@@ -397,18 +417,21 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 
   .number-generator {
+    grid-template:
+      "number-generator__header"
+      "number-generator__container"
+      "number-generator__questions";
     max-width: 320px;
-    flex-direction: column;
+    place-content: unset;
+    margin-top: 8rem;
+    align-items: unset;
+    row-gap: 42px;
     min-height: unset;
   }
 
-  .number-generator__info {
-    max-width: 320px;
-    margin-top: 8rem;
-  } 
-
   .number-generator__header {
     gap: 8px;
+    max-width: 320px;
   }
 
   .number-generator__title {
@@ -416,27 +439,14 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 
   .number-generator__container {
-    width: 320px;
+    width: unset;
   }
+
+  .form__description {
+    font: var(--paragraph-medium);
+  } 
 
   .number-generator__questions {
-    position: absolute;
-    max-width: 320px;
-    top: 750px;
-    padding-bottom: 44px;
-  }
-
-  .number-generator__form {
-    position: absolute;
-    top: 306px;
-    max-width: 320px;
-  }
-
-  .form__button-primary {
-    top: 354px;
-  }
-
-  .number-generator__form {
-    display: none;
+    padding: 40px 0;
   }
 }

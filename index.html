@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -133,6 +133,9 @@
                   type="number"
                   id="quantity"
                   name="quantity"
+                  min="1"
+                  step="1"
+                  placeholder="20"
                 />
               </div>
               <div class="form__field">
@@ -142,22 +145,34 @@
                   type="number"
                   id="startNumber"
                   name="startNumber"
+                  step="1"
+                  placeholder="1"
                 />
               </div>
               <div class="form__field">
                 <label class="form__label" for="endNumber">Até</label>
-                <input class="form__input" type="number" id="endNumber" name="endNumber" />
+                <input
+                  class="form__input"
+                  type="number"
+                  id="endNumber"
+                  name="endNumber"
+                  step="1"
+                  placeholder="50"
+                />
               </div>
             </div>
-            <label class="form__switch">
-              <input type="checkbox" class="form__switch-input" />
+            <label class="form__switch" for="noRepeat">
+              <input type="checkbox" class="form__switch-input noRepeat" id="noRepeat" name="noRepeat"/>
               <span class="form__switch-slider"></span>
               <span class="form__switch-text">Não repetir número</span>
             </label>
           </form>
         </div>
 
-        <div class="number-generator__result">
+        <div id="statusMessage" role="status" aria-live="polite">
+        </div>
+
+        <div class="number-generator__result is-hidden">
           <div class="result__container">
             <h4 class="result__title">Resultado do Sorteio</h4>
             <p class="result__paragraph">1° Resultado</p>

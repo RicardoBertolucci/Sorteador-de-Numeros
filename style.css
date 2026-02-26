@@ -404,7 +404,7 @@ input[type="number"]::-webkit-inner-spin-button {
   transform: translateX(0);
 }
 
-.number-generator__result {
+.is-hidden {
   display: none;
 }
 

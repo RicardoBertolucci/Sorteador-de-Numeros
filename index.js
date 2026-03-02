@@ -7,13 +7,14 @@ const statusMessage = document.getElementById("statusMessage");
 const btnSubmit = document.querySelector(".form__button-primary");
 
 form.addEventListener("submit", (e) => {
-  //O submit acontece na TAG form e não no botão
+  // O submit acontece na TAG form e não no botão
   e.preventDefault();
 
   // Válida se os campos estão vazios ou não
   const emptyFields = (hasEmpty) => {
     statusMessage.textContent = "";
-    if (!emptyFields(hasEmpty)) {
+
+    if (hasEmpty) {
       statusMessage.setAttribute("role", "alert");
       statusMessage.textContent =
         "Erro - Todos os campos precisam ser preenchidos!";
@@ -24,14 +25,14 @@ form.addEventListener("submit", (e) => {
       }, 3000);
 
       return false;
-    } else {
-      statusMessage.setAttribute("role", "status");
-      return true;
     }
+
+    statusMessage.setAttribute("role", "status");
+    return true;
   };
 
   // Capturo os valores dos inputs
-  let values = {
+  const values = {
     inputQuantity: quantityOfNumbers.value,
     inputStart: startNumber.value,
     inputEnd: endNumber.value,
@@ -42,5 +43,31 @@ form.addEventListener("submit", (e) => {
     values.inputStart === "" ||
     values.inputEnd === "";
 
-  emptyFields(hasEmpty);
+  if (!emptyFields(hasEmpty)) return;
+
+  // Validando se o valor é um dado do tipo number, inteiro e máximo e mínimo
+  const maxAndMin = (data) => {
+    const array = Object.values(data);
+
+    for (let i = 0; i < array.length; i++) {
+      array[i] = Number(array[i]);
+
+      if (Number.isNaN(array[i])) {
+        statusMessage.setAttribute("role", "alert");
+        statusMessage.textContent = "Insira um número válido";
+        return false;
+      }
+
+      if (!Number.isInteger(array[i])) {
+        statusMessage.setAttribute("role", "alert");
+        statusMessage.textContent = "Insira um número válido";
+        return false;
+      }
+    }
+
+    statusMessage.setAttribute("role", "status");
+    return true;
+  };
+
+  if (!maxAndMin(values)) return;
 });

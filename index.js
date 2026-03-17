@@ -2,7 +2,7 @@ const form = document.getElementById("number-form");
 const quantityOfNumbers = document.getElementById("quantity");
 const startNumber = document.getElementById("startNumber");
 const endNumber = document.getElementById("endNumber");
-const repeatNumber = document.querySelector(".form__switch-input");
+const repeatNumber = document.getElementById("noRepeat");
 const statusMessage = document.getElementById("statusMessage");
 const btnSubmit = document.querySelector(".form__button-primary");
 
@@ -43,10 +43,11 @@ form.addEventListener("submit", (e) => {
     values.inputStart === "" ||
     values.inputEnd === "";
 
+  // Se emptyFields(hasEmpty) for falso retorne
   if (!emptyFields(hasEmpty)) return;
 
-  // Validando se o valor é um dado do tipo number, inteiro e máximo e mínimo
-  const maxAndMin = (data) => {
+  // Vaidando se o vaor digitado é mesmo um número e se ele é inteiro
+  const stringForNumber = (data) => {
     const array = Object.values(data);
 
     for (let i = 0; i < array.length; i++) {
@@ -60,7 +61,7 @@ form.addEventListener("submit", (e) => {
 
       if (!Number.isInteger(array[i])) {
         statusMessage.setAttribute("role", "alert");
-        statusMessage.textContent = "Insira um número válido";
+        statusMessage.textContent = "Insira um número inteiro";
         return false;
       }
     }
@@ -69,5 +70,26 @@ form.addEventListener("submit", (e) => {
     return true;
   };
 
+  // Se numberAndInteger for falso retorne
+  if (!stringForNumber(values)) return;
+
+  const maxAndMin = (numbers) => {
+    const array = Object.values(numbers);
+
+    const lowestValue = array[1];
+    const highestValue = array[2];
+
+    if (highestValue <= lowestValue) {
+      statusMessage.setAttribute("role", "alert");
+      statusMessage.textContent =
+        "O valor máximo deve ser maior que o valor mínimo";
+      return false;
+    }
+
+    return true;
+  };
+
   if (!maxAndMin(values)) return;
+
+  console.log("Submit:", repeatNumber.checked);
 });

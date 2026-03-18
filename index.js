@@ -6,6 +6,39 @@ const repeatNumber = document.getElementById("noRepeat");
 const statusMessage = document.getElementById("statusMessage");
 const btnSubmit = document.querySelector(".form__button-primary");
 
+const uniqueNumbers = (quantity, min, max) => {
+  const result = [];
+  let number;
+
+  min = Math.ceil(min);
+  max = Math.floor(max);
+
+  for (let i = 0; i < quantity; i++) {
+    number = Math.floor(Math.random() * (max - min + 1)) + min;
+    result.push(number);
+  }
+
+  // Terminar a lógica de ser um único número
+
+  return result;
+};
+
+const sortedNumbers = (quantity, min, max) => {
+  const result = [];
+
+  let number;
+
+  min = Math.ceil(min);
+  max = Math.floor(max);
+
+  for (let i = 0; i < quantity; i++) {
+    number = Math.floor(Math.random() * (max - min + 1)) + min;
+    result.push(number);
+  }
+
+  return result;
+};
+
 form.addEventListener("submit", (e) => {
   // O submit acontece na TAG form e não no botão
   e.preventDefault();
@@ -43,7 +76,7 @@ form.addEventListener("submit", (e) => {
     values.inputStart === "" ||
     values.inputEnd === "";
 
-  // Se emptyFields(hasEmpty) for falso retorne
+  // Se tem campo vazio emptyFields(hasEmpty) retorne
   if (!emptyFields(hasEmpty)) return;
 
   // Vaidando se o vaor digitado é mesmo um número e se ele é inteiro
@@ -73,6 +106,7 @@ form.addEventListener("submit", (e) => {
   // Se numberAndInteger for falso retorne
   if (!stringForNumber(values)) return;
 
+  // Validando se o máximo é maior que o mínimo
   const maxAndMin = (numbers) => {
     const array = Object.values(numbers);
 
@@ -89,7 +123,45 @@ form.addEventListener("submit", (e) => {
     return true;
   };
 
+  //
   if (!maxAndMin(values)) return;
 
-  console.log("Submit:", repeatNumber.checked);
+  const quantityInterval = (noRepeat) => {
+    if (!noRepeat) return true;
+
+    const array = Object.values(values);
+
+    const quantity = array[0];
+    const minNumber = array[1];
+    const maxNumber = array[2];
+
+    const possibleNumbers = maxNumber - (minNumber - 1);
+
+    if (quantity > possibleNumbers) {
+      statusMessage.setAttribute("role", "alert");
+      statusMessage.textContent =
+        "Não possui quantidade suficiente de números para o sorteio";
+      return false;
+    }
+
+    return true;
+  };
+
+  const noRepeat = repeatNumber.checked;
+
+  if (!quantityInterval(noRepeat)) return;
+
+  const quantityNumbers = Number(values.inputQuantity);
+  const minNumber = Number(values.inputStart);
+  const maxNumber = Number(values.inputEnd);
+  let resultNumbers = [];
+
+  if (noRepeat) {
+    resultNumbers = uniqueNumbers(quantityNumbers, minNumber, maxNumber);
+  } else {
+    resultNumbers = sortedNumbers(quantityNumbers, minNumber, maxNumber);
+  }
+
+  console.log(resultNumbers);
+  // Preciso criar a exibição dos números na DOM
 });

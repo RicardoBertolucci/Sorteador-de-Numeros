@@ -313,34 +313,44 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .result__sort-numbers {
   display: flex;
-  justify-content: center;
-  width: 100%;
-  color: var(--content-primary);
+  gap: 12px;
+
+  justify-content: flex-start;
+
   overflow-x: auto;
+  white-space: nowrap;
+
+  padding: 8px 16px;
+  width: 100%;
+
   scrollbar-width: thin;
-  /* Firefox */
-  scrollbar-color: #77c0af #ffffff;
+  scrollbar-color: #77c0af #000;
 }
 
+/* Scroll */
 .result__sort-numbers::-webkit-scrollbar {
   height: 6px;
 }
 
 .result__sort-numbers::-webkit-scrollbar-track {
-  background: #ffffff;
-  border-radius: 10px;
+  background: #000;
 }
 
 .result__sort-numbers::-webkit-scrollbar-thumb {
   background: #77c0af;
-  /* verde do seu palette */
   border-radius: 10px;
 }
 
-.result__sort-numbers::-webkit-scrollbar-button {
+/* REMOVE SETAS */
+.result__sort-numbers::-webkit-scrollbar-button:single-button {
   display: none;
   width: 0;
   height: 0;
+}
+
+.result__sort-numbers::-webkit-scrollbar-button:start:decrement,
+.result__sort-numbers::-webkit-scrollbar-button:end:increment {
+  display: none;
 }
 
 .result__sort-numbers .result__numbers {
@@ -411,6 +421,8 @@ input[type="number"]::-webkit-inner-spin-button {
 .is-hidden {
   display: none;
 }
+
+
 
 /* =============== Responsive mobile =============== */
 @media (min-width: 0px) and (max-width: 1064px) {

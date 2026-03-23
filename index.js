@@ -13,12 +13,22 @@ const uniqueNumbers = (quantity, min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
 
-  for (let i = 0; i < quantity; i++) {
+  while (result.length < quantity) {
     number = Math.floor(Math.random() * (max - min + 1)) + min;
-    result.push(number);
-  }
 
-  // Terminar a lógica de ser um único número
+    let exists = false;
+
+    for (let j = 0; j < result.length; j++) {
+      if (number === result[j]) {
+        exists = true;
+        break;
+      }
+    }
+
+    if (!exists) {
+      result.push(number);
+    }
+  }
 
   return result;
 };

@@ -5,6 +5,11 @@ const endNumber = document.getElementById("endNumber");
 const repeatNumber = document.getElementById("noRepeat");
 const statusMessage = document.getElementById("statusMessage");
 const btnSubmit = document.querySelector(".form__button-primary");
+const divResult = document.querySelector(".number-generator__result");
+const resultSortNumbers = document.querySelector(".result__sort-numbers");
+const buttonText = document.querySelector(".button-text");
+let countResult = document.querySelector(".contador");
+let contador = 1;
 
 const uniqueNumbers = (quantity, min, max) => {
   const result = [];
@@ -118,10 +123,8 @@ form.addEventListener("submit", (e) => {
 
   // Validando se o máximo é maior que o mínimo
   const maxAndMin = (numbers) => {
-    const array = Object.values(numbers);
-
-    const lowestValue = array[1];
-    const highestValue = array[2];
+    const lowestValue = Number(numbers.inputStart);
+    const highestValue = Number(numbers.inputEnd);
 
     if (highestValue <= lowestValue) {
       statusMessage.setAttribute("role", "alert");
@@ -172,6 +175,51 @@ form.addEventListener("submit", (e) => {
     resultNumbers = sortedNumbers(quantityNumbers, minNumber, maxNumber);
   }
 
-  console.log(resultNumbers);
-  // Preciso criar a exibição dos números na DOM
+  const createDivNumber = (num) => {
+    const span = document.createElement("span");
+    span.classList.add("result__numbers");
+    span.textContent = num;
+    return span;
+  };
+
+  if (resultNumbers.length) {
+    if (divResult.classList.contains("is-hidden")) {
+      form.style.display = "none";
+      divResult.classList.remove("is-hidden");
+    }
+
+    countResult.innerHTML = contador;
+    contador++;
+
+    btnSubmit.style.display = "none";
+
+    resultSortNumbers.innerHTML = "";
+
+    resultSortNumbers.scrollLeft = 0;
+
+    for (let i = 0; i < resultNumbers.length; i++) {
+      let value = createDivNumber(resultNumbers[i]);
+
+      setTimeout(() => {
+        resultSortNumbers.append(value);
+
+        requestAnimationFrame(() => {
+          value.classList.add("show");
+        });
+
+        resultSortNumbers.scrollTo({
+          left: resultSortNumbers.scrollWidth,
+          behavior: "smooth",
+        });
+
+        if (i === resultNumbers.length - 1) {
+          
+          
+          btnSubmit.style.display = "inline-flex";
+          
+          buttonText.textContent = "Sortear Novamente";
+        }
+      }, i * 1000);
+    }
+  }
 });

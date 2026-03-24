@@ -29,8 +29,8 @@
   --accent-red: #e9a9b3;
 
   /* Gradient */
-  --gradient-border: #77c0af 0%, #d1dc97 14.84%, #e9a9b3 32.15%, #d586e0 65.79%,
-    #91a1fa 84.58%;
+  --gradient-border:
+    #77c0af 0%, #d1dc97 14.84%, #e9a9b3 32.15%, #d586e0 65.79%, #91a1fa 84.58%;
   --gradient-background: #d586e0 0%, #91a1fa 98.93%;
   --gradient-content: #c7c9cc 0%, #3d3d3d 100%;
 
@@ -207,20 +207,16 @@ body img {
   border: 1px solid transparent;
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  background-image: linear-gradient(
-      var(--background-secondary),
-      var(--background-secondary)
-    ),
+  background-image:
+    linear-gradient(var(--background-secondary), var(--background-secondary)),
     linear-gradient(90deg, var(--gradient-border));
 }
 
 .form__input:focus {
   outline: none;
   border: 2px solid transparent;
-  background: linear-gradient(
-        var(--background-secondary),
-        var(--background-secondary)
-      )
+  background:
+    linear-gradient(var(--background-secondary), var(--background-secondary))
       padding-box,
     linear-gradient(90deg, var(--gradient-border)) border-box;
 }
@@ -361,6 +357,15 @@ input[type="number"]::-webkit-inner-spin-button {
   font-family: "Roboto Mono", sans-serif;
   color: var(--content-brand);
   padding: 7px 13px;
+
+  opacity: 0;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.result__numbers.show {
+  opacity: 1;
 }
 
 /* Button Draw */
@@ -386,10 +391,8 @@ input[type="number"]::-webkit-inner-spin-button {
   border: 1px solid transparent;
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  background-image: linear-gradient(
-      var(--background-tertiary),
-      var(--background-tertiary)
-    ),
+  background-image:
+    linear-gradient(var(--background-tertiary), var(--background-tertiary)),
     linear-gradient(90deg, var(--gradient-border));
   box-shadow: 0 0 10px rgba(197, 141, 231, 0.4);
 }
@@ -399,10 +402,8 @@ input[type="number"]::-webkit-inner-spin-button {
   box-shadow: 0 0 14px rgba(197, 141, 231, 0.6);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  background-image: linear-gradient(
-      var(--background-tertiary),
-      var(--background-tertiary)
-    ),
+  background-image:
+    linear-gradient(var(--background-tertiary), var(--background-tertiary)),
     linear-gradient(90deg, var(--gradient-border));
 }
 
@@ -421,8 +422,6 @@ input[type="number"]::-webkit-inner-spin-button {
 .is-hidden {
   display: none;
 }
-
-
 
 /* =============== Responsive mobile =============== */
 @media (min-width: 0px) and (max-width: 1064px) {
@@ -455,12 +454,14 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 
   .number-generator__container {
-    width: unset;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .form__description {
     font: var(--paragraph-medium);
-  } 
+  }
 
   .number-generator__questions {
     padding: 40px 0;
